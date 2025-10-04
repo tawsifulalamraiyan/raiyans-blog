@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import {
   Mail,
   MapPin,
@@ -15,30 +15,6 @@ import {
 } from "lucide-react";
 
 const ContactPage = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({ name: "", email: "", subject: "", message: "" });
-    }, 3000);
-  };
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   const contactInfo = [
     {
       icon: Mail,
@@ -235,7 +211,7 @@ const ContactPage = () => {
                       </p>
                     </div>
 
-                    <div onSubmit={handleSubmit} className="space-y-6">
+                    <div className="space-y-6">
                       {/* Name Input */}
                       <div className="group/input">
                         <label
@@ -250,8 +226,6 @@ const ContactPage = () => {
                             type="text"
                             id="name"
                             name="name"
-                            value={formData.name}
-                            onChange={handleChange}
                             required
                             className="w-full pl-12 pr-4 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-teal-500/50 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300"
                             placeholder="John Doe"
@@ -273,8 +247,6 @@ const ContactPage = () => {
                             type="email"
                             id="email"
                             name="email"
-                            value={formData.email}
-                            onChange={handleChange}
                             required
                             className="w-full pl-12 pr-4 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-teal-500/50 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300"
                             placeholder="john@example.com"
@@ -296,8 +268,6 @@ const ContactPage = () => {
                             type="text"
                             id="subject"
                             name="subject"
-                            value={formData.subject}
-                            onChange={handleChange}
                             required
                             className="w-full pl-12 pr-4 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-teal-500/50 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300"
                             placeholder="Project Inquiry"
@@ -316,8 +286,6 @@ const ContactPage = () => {
                         <textarea
                           id="message"
                           name="message"
-                          value={formData.message}
-                          onChange={handleChange}
                           required
                           rows={6}
                           className="w-full px-4 py-4 bg-slate-800/50 border border-slate-700/50 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-teal-500/50 focus:ring-2 focus:ring-teal-500/20 transition-all duration-300 resize-none"
@@ -328,28 +296,10 @@ const ContactPage = () => {
                       {/* Submit Button */}
                       <button
                         type="button"
-                        onClick={handleSubmit}
-                        disabled={isSubmitted}
                         className="group/btn relative w-full overflow-hidden"
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 rounded-xl blur-xl opacity-50 group-hover/btn:opacity-75 transition-opacity"></div>
-                        <div className="relative bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 rounded-xl px-8 py-4 flex items-center justify-center gap-3 group-hover/btn:scale-105 transition-transform duration-300 shadow-xl">
-                          {isSubmitted ? (
-                            <>
-                              <CheckCircle className="h-6 w-6 text-white" />
-                              <span className="text-white font-bold text-lg">
-                                Message Sent!
-                              </span>
-                            </>
-                          ) : (
-                            <>
-                              <span className="text-white font-bold text-lg">
-                                Send Message
-                              </span>
-                              <Send className="h-6 w-6 text-white group-hover/btn:translate-x-1 transition-transform" />
-                            </>
-                          )}
-                        </div>
+                        <div className="relative bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 rounded-xl px-8 py-4 flex items-center justify-center gap-3 group-hover/btn:scale-105 transition-transform duration-300 shadow-xl"></div>
                       </button>
                     </div>
                   </div>
