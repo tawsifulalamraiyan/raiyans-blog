@@ -11,13 +11,11 @@ import {
   TrendingUp,
   BookOpen,
   Loader2,
-  Filter,
   Sparkles,
 } from "lucide-react";
 import axios from "axios";
-import { Input } from "@/components/ui/input";
+
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 
 interface Blog {
   _id: string;
@@ -139,46 +137,7 @@ const BlogPage = () => {
           </div>
 
           {/* Search and Filter Bar */}
-          <div className="max-w-4xl mx-auto mb-8">
-            <div className="bg-slate-800/50 backdrop-blur-md rounded-2xl border border-cyan-500/20 p-4 shadow-xl">
-              <div className="flex flex-col md:flex-row gap-4">
-                {/* Search Input */}
-                <div className="relative flex-1">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <Input
-                    type="text"
-                    placeholder="Search articles..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-12 pr-4 py-3 w-full bg-slate-900/50 border-cyan-500/20 text-white placeholder:text-gray-500 focus:border-cyan-500/40 rounded-xl"
-                  />
-                </div>
-
-                {/* Filter Button */}
-                <Button className="bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 rounded-xl">
-                  <Filter className="w-4 h-4 mr-2" />
-                  Filter
-                </Button>
-              </div>
-
-              {/* Tag Filters */}
-              <div className="flex flex-wrap gap-2 mt-4">
-                {uniqueTags.map((tag) => (
-                  <button
-                    key={tag}
-                    onClick={() => setSelectedTag(tag)}
-                    className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
-                      selectedTag === tag
-                        ? "bg-cyan-500 text-white shadow-lg shadow-cyan-500/30"
-                        : "bg-slate-800/50 text-gray-400 hover:bg-slate-800/80 hover:text-cyan-300 border border-cyan-500/20"
-                    }`}
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+          <div className="max-w-4xl mx-auto mb-8"></div>
 
           {/* Stats */}
           <div className="flex flex-wrap gap-6 justify-center mb-12">
