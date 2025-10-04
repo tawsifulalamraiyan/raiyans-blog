@@ -1,3 +1,4 @@
+import BlogPage from "@/components/Blog";
 import HeroSection from "@/components/HeroSection";
 import React from "react";
 
@@ -6,6 +7,10 @@ const Home = () => {
     <>
       <main>
         <HeroSection />
+
+        <section>
+          <BlogPage />
+        </section>
       </main>
     </>
   );

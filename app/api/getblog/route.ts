@@ -11,10 +11,14 @@ export async function GET() {
     const blogs = await BlogModel.find();
 
     return NextResponse.json(blogs, { status: 200 });
-  } catch (error) {
+  } catch (error: unknown) {
     console.error("Error fetching blogs:", error);
+
+    // Safely get the error message
+    const message = error instanceof Error ? error.message : String(error);
+
     return NextResponse.json(
-      { message: "Failed to fetch blogs", error: error.message },
+      { message: "Failed to fetch blogs", error: message },
       { status: 500 }
     );
   }
